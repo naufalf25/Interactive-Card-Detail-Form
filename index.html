@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="./public/images/favicon-32x32.png">
+    <link rel="stylesheet" href="./public/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
+    <title>Frontend Mentor | Interactive Card Details Form</title>
+</head>
+<body class="overflow-x-hidden">
+    <div class="lg:flex lg:flex-wrap">
+        <div class="lg:w-1/4">
+            <!-- Hero background section start -->
+            <section class="w-full h-60 bg-mobile lg:hidden"></section>
+            <section class="hidden h-screen w-full bg-desktop lg:block"></section>
+            <!-- Hero background section end -->
+    
+            <!-- Card front section copy start -->
+            <section class="absolute top-[7.7rem] z-20 md:w-full lg:w-max lg:left-[8%] lg:top-[20%] xl:left-[10%]">
+                <div class="container">
+                    <div class="card card-front px-5 py-4">
+                        <div class="card-logo"></div>
+                        <div class="mt-6 tracking-widest">
+                            <p id="numberInCard" class="text-white text-lg">0000 0000 0000 0000</p>
+                        </div>
+                        <div class="mt-3 flex text-white">
+                            <p id="cardName" class="w-1/2 uppercase text-[0.5em] tracking-[0.2rem] truncate">yourname</p>
+                            <p class="w-1/2 text-[0.5em] tracking-[0.2rem] text-end"><span id="month">00</span>/<span id="year">00</span></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Card front section copy end -->
+    
+            <!-- Card back section copy start -->
+            <section class="absolute top-8 right-0 z-10 md:w-full lg:w-max lg:left-[11%] lg:top-[52%] xl:left-[15%]">
+                <div class="container">
+                    <div class="card card-back">
+                        <p id="cvcCard" class="pt-[4.3rem] pr-9 text-end text-white text-sm tracking-widest">000</p>
+                    </div>
+                </div>
+            </section>
+            <!-- Card back section copy end -->
+        </div>
+    
+        <div class="lg:w-3/4 lg:flex lg:flex-col lg:justify-center lg:items-center">
+            <!-- Form section start -->
+            <section id="formSection" class="mt-20 mb-6 lg:w-[40%] lg:m-0 lg:ml-4">
+                <div class="container">
+                    <form>
+                        <div class="flex flex-col">
+                            <label for="cardholderName" class="uppercase text-xs tracking-widest">Cardholder Name</label>
+                            <input type="text" id="cardHolderName" class="input-group" placeholder="eg. Muhammad Naufal Farras">
+                            <p id="nameError" class="hidden mt-2 text-xs text-red-500">Can't be blank</p>
+                        </div>
+                        <div class="mt-5 flex flex-col">
+                            <label for="cardNumber" class="uppercase text-xs tracking-widest">Card Number</label>
+                            <input type="tel" id="cardNumber" class="input-group invalid:border-red-500" placeholder="eg. 1234 5678 9012 3456" minlength="16" maxlength="16">
+                            <p id="numberError" class="hidden mt-2 text-xs text-red-500">Can't be blank</p>
+                            <p id="formatError" class="hidden mt-2 text-xs text-red-500">Wrong format, number only</p>
+                        </div>
+                        <div class="flex flex-wrap">
+                            <div class="w-1/2 mt-5 flex flex-col">
+                                <label for="cardDate" class="uppercase text-xs tracking-widest">EXP. date (mm/yy)</label>
+                                <div class="pr-2 flex">
+                                    <input min="1" max="12" type="number" id="monthDate" class="input-group w-full mr-2 out-of-range:border-red-500" placeholder="MM" maxlength="2" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                                    <input min="20" type="number" id="yearDate" class="input-group w-full" placeholder="YY" maxlength="2" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                                </div>
+                                <p id="dateError" class="hidden mt-2 text-xs text-red-500">Can't be blank</p>
+                            </div>
+                            <div class="w-1/2 mt-5 flex flex-col">
+                                <label for="cvc" class="uppercase text-xs tracking-widest">CVC</label>
+                                <input min="1" type="number" id="cvc" class="input-group" placeholder="eg. 123" maxlength="3" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                                <p id="cvcError" class="hidden mt-2 text-xs text-red-500">Can't be blank</p>
+                            </div>
+                        </div>
+                        <button id="confirmButton" type="submit" class="w-full mt-6 p-3 bg-violet-verydark text-white rounded-lg border-[1px] border-violet-verydark transition duration-300 cursor-pointer hover:text-violet-verydark hover:bg-white">Confirm</button>
+                    </form>
+                </div>
+            </section>
+            <!-- Form section end -->
+    
+            <!-- Complete section start -->
+            <section id="completeSection" class="hidden mt-20 mb-4 lg:w-[40%] lg:m-0 lg:ml-4">
+                <div class="container">
+                    <div class="text-center">
+                        <img src="./public/images/icon-complete.svg" alt="icon-complete" class="w-1/5 mx-auto">
+                        <h3 class="mt-6 uppercase text-2xl tracking-widest">thank you!</h3>
+                        <p class="mt-4 text-slate-400">We've added your card details</p>
+                        <button id="continueButton" class="w-full mt-10 p-3 bg-violet-verydark text-white rounded-lg border-[1px] border-violet-verydark transition duration-300 hover:text-violet-verydark hover:bg-white">Continue</button>
+                    </div>
+                </div>
+            </section>
+            <!-- Complete section end -->
+            <div class="attribution text-end w-full mt-8">
+                Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+                Coded by <a href="https://www.frontendmentor.io/profile/naufalf25" target="_blank">Muhammad Naufal Farras</a>.
+            </div>
+        </div>
+    </div>
+
+    <script src="./public/js/index.js"></script>
+</body>
+</html>

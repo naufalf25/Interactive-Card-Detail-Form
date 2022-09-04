@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.input-group {
+    @apply mt-2 px-4 py-2 border-[1px] border-slate-300 rounded-lg text-slate-800 focus:outline-blue-500;
+}
+
+.bg-mobile {
+    background: url('../images/bg-main-mobile.png');
+}
+
+.bg-desktop {
+    background: url('../images/bg-main-desktop.png');
+}
+
+.card {
+    height: 160px;
+    width: 290px;
+    @apply rounded-lg shadow-xl md:mx-auto md:translate-x-5 lg:scale-105 lg:m-0 xl:scale-125;
+}
+
+.card-front {
+    background: url('../images/bg-card-front.png') center right;
+}
+
+.card-back {
+    background: center / contain url('../images/bg-card-back.png');
+}
+
+.card-logo {
+    background-image: url('../images/card-logo.svg');
+    background-repeat: no-repeat;
+    background-size: 55px;
+    height: 40%;
+}
+
+.border-red {
+    @apply border-red-500;
+}
+
+.outline-red {
+    @apply outline-red-500;
+}
+
+.attribution { 
+    font-size: 11px; text-align: center; 
+}
+
+.attribution a { 
+    color: hsl(228, 45%, 44%);
+    @apply hover:underline hover:underline-offset-2;
+}
