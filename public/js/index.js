@@ -94,14 +94,19 @@ function formInput() {
             nameCard.textContent = 'yourname';
         }
     });
+
+    inputNumberCard.addEventListener('input', () => {
+        if (inputNumberCard.value.length === 4 || inputNumberCard.value.length === 10 || inputNumberCard.value.length === 16) {
+            inputNumberCard.value += '  ';
+        }
+    });
     
     inputNumberCard.addEventListener('keyup', function() {
         const fixNumberCard = inputNumberCard.value;
         const numberError = document.getElementById('numberError');
         const formatError = document.getElementById('formatError');
         if (!fixNumberCard < 1) {
-            let addSpace = fixNumberCard.match(/.{1,4}/g);
-            numberCard.textContent = addSpace.join(' ');
+            numberCard.textContent = fixNumberCard;
             numberError.classList.add('hidden');
             inputNumberCard.classList.remove('border-red');
         } else {
