@@ -22,10 +22,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
     confirmButton.addEventListener('click', (e) => {
         e.preventDefault();
+        const newInputNumber = inputNumberCard.value.replaceAll('  ', '');
 
-        if (inputNameCard.value != 0 && inputNumberCard.value != 0 && inputNumberCard.value.length < 16 && inputMonthDate.value != 0 && inputYearDate.value != 0 && inputCvcCard.value != 0) {
-            
-            if (inputNumberCard.value.isNumber()) {
+        if (inputNameCard.value != 0 && inputNumberCard.value != 0 && newInputNumber.length < 17 && inputMonthDate.value != 0 && inputYearDate.value != 0 && inputCvcCard.value != 0) {
+            if (newInputNumber.isNumber()) {
                 const formSection = document.getElementById('formSection');
                 const completeSection = document.getElementById('completeSection');
                 formSection.classList.add('hidden');
@@ -36,6 +36,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 inputNumberCard.classList.add('border-red');
             }
         } else {
+            console.log(false);
             if (inputNameCard.value < 1) {
                 const nameError = document.getElementById('nameError');
 
